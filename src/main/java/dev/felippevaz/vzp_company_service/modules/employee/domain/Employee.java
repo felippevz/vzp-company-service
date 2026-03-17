@@ -22,6 +22,6 @@ public class Employee {
     private UUID departmentId;
 
     @ManyToOne
-    @JoinColumn(name = "enterprise_id")
-    private Company enterprise;
+    @JoinColumn(name = "company_id")
+    private Company company;
 }
