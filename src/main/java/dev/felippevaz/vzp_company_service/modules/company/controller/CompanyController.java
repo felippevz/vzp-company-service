@@ -1,6 +1,7 @@
 package dev.felippevaz.vzp_company_service.modules.company.controller;
 
-import dev.felippevaz.vzp_company_service.modules.company.domain.Company;
+import dev.felippevaz.vzp_company_service.modules.company.dto.request.CompanyRequestDTO;
+import dev.felippevaz.vzp_company_service.modules.company.dto.response.CompanyResponseDTO;
 import dev.felippevaz.vzp_company_service.modules.company.service.CompanyService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Company")
+@RequestMapping("/company")
 public class CompanyController {
 
     private final CompanyService service;
@@ -19,21 +20,26 @@ public class CompanyController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Company>> findCompanies() {
+    public ResponseEntity<List<CompanyResponseDTO>> findCompanies() {
         return ResponseEntity.ok(this.service.findAll());
     }
 
     @PostMapping
-    public ResponseEntity<Company> createCompany(@RequestBody Company company) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(this.service.create(company));
+    public ResponseEntity<CompanyResponseDTO> createCompany(@RequestBody CompanyRequestDTO companyRequestDTO) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.service.create(companyRequestDTO));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Company> readCompany(@PathVariable Long id) {
+    public ResponseEntity<CompanyResponseDTO> readCompany(@PathVariable Long id) {
         return ResponseEntity.ok(this.service.read(id));
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
+    public ResponseEntity<CompanyResponseDTO> updateCompany(@PathVariable Long id, @RequestBody CompanyRequestDTO companyRequestDTO) {
+        return ResponseEntity.ok(this.service.update(id, companyRequestDTO));
+    }
+
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCompany(@PathVariable Long id) {
         this.service.delete(id);
         return ResponseEntity.noContent().build();
