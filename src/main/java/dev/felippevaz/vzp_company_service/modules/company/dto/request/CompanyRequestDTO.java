@@ -1,6 +1,6 @@
 package dev.felippevaz.vzp_company_service.modules.company.dto.request;
 
-import dev.felippevaz.vzp_company_service.common.dto.AddressDTO;
+import dev.felippevaz.vzp_company_service.common.domain.Address;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -21,7 +21,7 @@ public record CompanyRequestDTO(
         List<String> phones,
 
         @NotNull
-        AddressDTO address,
+        Address address,
 
         LocalDate foundation
 
