@@ -1,4 +1,4 @@
-package dev.felippevaz.vzp_company_service.modules.company.dto;
+package dev.felippevaz.vzp_company_service.modules.company.dto.request;
 
 import dev.felippevaz.vzp_company_service.common.dto.AddressDTO;
 import jakarta.validation.constraints.Email;
