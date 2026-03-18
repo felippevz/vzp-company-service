@@ -25,5 +25,5 @@ public interface CompanyMapper {
     @Mapping(target = "employees", ignore = true)
     @Mapping(target = "status", ignore = true)
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateEntityFromDTO(CompanyRequestDTO dto, @MappingTarget Company entity);
+    void updateEntityFromDTO(CompanyRequestDTO requestDTO, @MappingTarget Company company);
 }
