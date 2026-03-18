@@ -1,17 +1,15 @@
 package dev.felippevaz.vzp_company_service.modules.employee.domain;
 
 import dev.felippevaz.vzp_company_service.common.domain.Address;
-import dev.felippevaz.vzp_company_service.modules.company.domain.Company;
+import dev.felippevaz.vzp_company_service.common.domain.BaseEntity;
 import jakarta.persistence.*;
-
-import java.util.UUID;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-public class Employee {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Getter
+@Setter
+public class Employee extends BaseEntity {
 
     private String name;
     private String email;
@@ -19,9 +17,5 @@ public class Employee {
     @Embedded
     private Address address;
 
-    private UUID departmentId;
-
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
+    private Long department; //todo: instantiate object Department later
 }
