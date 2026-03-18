@@ -20,27 +20,27 @@ public class CompanyController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CompanyResponseDTO>> findCompanies() {
+    public ResponseEntity<List<CompanyResponseDTO>> findAll() {
         return ResponseEntity.ok(this.service.findAll());
     }
 
     @PostMapping
-    public ResponseEntity<CompanyResponseDTO> createCompany(@RequestBody CompanyRequestDTO companyRequestDTO) {
+    public ResponseEntity<CompanyResponseDTO> create(@RequestBody CompanyRequestDTO companyRequestDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.service.create(companyRequestDTO));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CompanyResponseDTO> readCompany(@PathVariable Long id) {
+    public ResponseEntity<CompanyResponseDTO> read(@PathVariable Long id) {
         return ResponseEntity.ok(this.service.read(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CompanyResponseDTO> updateCompany(@PathVariable Long id, @RequestBody CompanyRequestDTO companyRequestDTO) {
+    public ResponseEntity<CompanyResponseDTO> update(@PathVariable Long id, @RequestBody CompanyRequestDTO companyRequestDTO) {
         return ResponseEntity.ok(this.service.update(id, companyRequestDTO));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCompany(@PathVariable Long id) {
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         this.service.delete(id);
         return ResponseEntity.noContent().build();
     }
