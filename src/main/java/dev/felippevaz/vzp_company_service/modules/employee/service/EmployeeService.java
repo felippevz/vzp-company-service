@@ -25,7 +25,7 @@ public class EmployeeService {
     }
 
     public List<EmployeeResponseDTO> findAll() {
-        return this.mapper.toResponseDTOList(this.repository.findAll(
+        return this.mapper.toResponseDTO(this.repository.findAll(
                 Specification.where(CompanySpecification.byCompany())
         ));
     }
@@ -53,7 +53,7 @@ public class EmployeeService {
         this.repository.deleteById(id);
     }
 
-    private Employee getEmployee(Long id) {
+    public Employee getEmployee(Long id) {
         return this.repository.findOne(
                 Specification.<Employee>where(CompanySpecification.byCompany())
                         .and(CompanySpecification.byId(id))
