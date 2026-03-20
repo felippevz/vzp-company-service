@@ -3,6 +3,7 @@ package dev.felippevaz.vzp_company_service.modules.company.controller;
 import dev.felippevaz.vzp_company_service.modules.company.dto.request.CompanyRequestDTO;
 import dev.felippevaz.vzp_company_service.modules.company.dto.response.CompanyResponseDTO;
 import dev.felippevaz.vzp_company_service.modules.company.service.CompanyService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class CompanyController {
     }
 
     @PostMapping
-    public ResponseEntity<CompanyResponseDTO> create(@RequestBody CompanyRequestDTO companyRequestDTO) {
+    public ResponseEntity<CompanyResponseDTO> create(@RequestBody @Valid CompanyRequestDTO companyRequestDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.service.create(companyRequestDTO));
     }
 
@@ -35,7 +36,7 @@ public class CompanyController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CompanyResponseDTO> update(@PathVariable Long id, @RequestBody CompanyRequestDTO companyRequestDTO) {
+    public ResponseEntity<CompanyResponseDTO> update(@PathVariable Long id, @RequestBody @Valid CompanyRequestDTO companyRequestDTO) {
         return ResponseEntity.ok(this.service.update(id, companyRequestDTO));
     }
 
