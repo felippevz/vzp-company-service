@@ -12,17 +12,17 @@ public interface CompanyMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "startedServiceAt", ignore = true)
-    @Mapping(target = "employees", ignore = true)
+    @Mapping(target = "departments", ignore = true)
     @Mapping(target = "status", ignore = true)
     Company toEntity(CompanyRequestDTO companyRequestDTO);
 
     CompanyResponseDTO toResponseDTO(Company company);
 
-    List<CompanyResponseDTO> toResponseDTOList(List<Company> companies);
+    List<CompanyResponseDTO> toResponseDTO(List<Company> companies);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "startedServiceAt", ignore = true)
-    @Mapping(target = "employees", ignore = true)
+    @Mapping(target = "departments", ignore = true)
     @Mapping(target = "status", ignore = true)
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateEntityFromDTO(CompanyRequestDTO requestDTO, @MappingTarget Company company);
