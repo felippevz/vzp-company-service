@@ -19,7 +19,7 @@ public interface EmployeeMapper {
 
     EmployeeResponseDTO toResponseDTO(Employee employee);
 
-    List<EmployeeResponseDTO> toResponseDTOList(List<Employee> employees);
+    List<EmployeeResponseDTO> toResponseDTO(List<Employee> employees);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "company", ignore = true)
