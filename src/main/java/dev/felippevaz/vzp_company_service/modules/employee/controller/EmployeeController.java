@@ -3,6 +3,7 @@ package dev.felippevaz.vzp_company_service.modules.employee.controller;
 import dev.felippevaz.vzp_company_service.modules.employee.dto.request.EmployeeRequestDTO;
 import dev.felippevaz.vzp_company_service.modules.employee.dto.response.EmployeeResponseDTO;
 import dev.felippevaz.vzp_company_service.modules.employee.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<EmployeeResponseDTO> create(@RequestBody EmployeeRequestDTO employeeRequestDTO) {
+    public ResponseEntity<EmployeeResponseDTO> create(@RequestBody @Valid EmployeeRequestDTO employeeRequestDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.service.create(employeeRequestDTO));
     }
 
@@ -35,7 +36,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EmployeeResponseDTO> update(@PathVariable Long id, @RequestBody EmployeeRequestDTO employeeRequestDTO) {
+    public ResponseEntity<EmployeeResponseDTO> update(@PathVariable Long id, @RequestBody @Valid EmployeeRequestDTO employeeRequestDTO) {
         return ResponseEntity.ok(this.service.update(id, employeeRequestDTO));
     }
 
