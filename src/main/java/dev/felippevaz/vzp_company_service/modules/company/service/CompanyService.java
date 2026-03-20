@@ -23,7 +23,7 @@ public class CompanyService {
     }
 
     public List<CompanyResponseDTO> findAll() {
-        return this.mapper.toResponseDTOList(this.repository.findAll());
+        return this.mapper.toResponseDTO(this.repository.findAll());
     }
 
     public CompanyResponseDTO create(CompanyRequestDTO companyRequestDTO) {
