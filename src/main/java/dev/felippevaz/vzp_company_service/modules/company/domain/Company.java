@@ -1,6 +1,7 @@
 package dev.felippevaz.vzp_company_service.modules.company.domain;
 
 import dev.felippevaz.vzp_company_service.common.domain.Address;
+import dev.felippevaz.vzp_company_service.modules.department.domain.Department;
 import dev.felippevaz.vzp_company_service.modules.employee.domain.Employee;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,7 +34,7 @@ public class Company {
     private List<String> phones;
 
     @OneToMany(mappedBy = "company")
-    private List<Employee> employees;
+    private List<Department> departments;
 
     private LocalDate foundation;
     private LocalDateTime startedServiceAt;
