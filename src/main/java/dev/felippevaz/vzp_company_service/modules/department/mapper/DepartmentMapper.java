@@ -11,7 +11,6 @@ import org.mapstruct.ReportingPolicy;
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.ERROR, uses = {DepartmentMapperUtil.class})
-
 public interface DepartmentMapper {
 
     @Mapping(target = "id", ignore = true)
