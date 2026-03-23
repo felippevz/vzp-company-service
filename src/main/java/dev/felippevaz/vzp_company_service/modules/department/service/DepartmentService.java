@@ -1,11 +1,13 @@
 package dev.felippevaz.vzp_company_service.modules.department.service;
 
+import dev.felippevaz.vzp_company_service.common.infrastructure.CompanySpecification;
 import dev.felippevaz.vzp_company_service.exceptions.ServiceException;
 import dev.felippevaz.vzp_company_service.modules.department.domain.Department;
 import dev.felippevaz.vzp_company_service.modules.department.dto.request.DepartmentRequestDTO;
 import dev.felippevaz.vzp_company_service.modules.department.dto.response.DepartmentResponseDTO;
 import dev.felippevaz.vzp_company_service.modules.department.mapper.DepartmentMapper;
 import dev.felippevaz.vzp_company_service.modules.department.repository.DepartmentRepository;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -50,8 +52,9 @@ public class DepartmentService {
     }
 
     public Department getDepartment(Long id) {
-        return this.repository.findById(id).orElseThrow(
-                () -> new ServiceException("department.not.found", HttpStatus.NOT_FOUND)
-        );
+        return this.repository.findOne(
+                Specification.<Department>where(CompanySpecification.byCompany())
+                        .and(CompanySpecification.byId(id))
+        ).orElseThrow(() -> new ServiceException("department.not.found", HttpStatus.NOT_FOUND));
     }
 }
