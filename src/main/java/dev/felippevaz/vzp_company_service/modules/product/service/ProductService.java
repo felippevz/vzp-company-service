@@ -25,7 +25,9 @@ public class ProductService {
     }
 
     public List<ProductResponseDTO> findAll() {
-        return this.mapper.toResponseDTO(this.repository.findAll());
+        return this.mapper.toResponseDTO(this.repository.findAll(
+                Specification.where(CompanySpecification.byCompany())
+        ));
     }
 
     public ProductResponseDTO create(ProductRequestDTO productRequestDTO) {
