@@ -25,7 +25,9 @@ public class DepartmentService {
     }
 
     public List<DepartmentResponseDTO> findAll() {
-        return this.mapper.toResponseDTO(this.repository.findAll());
+        return this.mapper.toResponseDTO(this.repository.findAll(
+                Specification.where(CompanySpecification.byCompany())
+        ));
     }
 
     public DepartmentResponseDTO create(DepartmentRequestDTO departmentRequestDTO) {
