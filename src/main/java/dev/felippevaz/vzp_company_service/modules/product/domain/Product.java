@@ -23,6 +23,6 @@ public class Product extends BaseEntity {
     private BigDecimal salePrice;
     private String category;
 
-    @OneToMany(mappedBy = "product_id")
+    @OneToMany(mappedBy = "product")
     private List<Inventory> inventories;
 }
